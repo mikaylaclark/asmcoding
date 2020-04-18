@@ -1,0 +1,11 @@
+.section data
+  .space 100000
+  endstack:
+
+.section init
+  .temps r6, r7
+  .temps r0
+  r2 := endstack
+  
+ 
+
