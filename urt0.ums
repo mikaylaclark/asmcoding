@@ -3,8 +3,7 @@
   endstack:
 
 .section init
-  .temps r6, r7
-  .temps r0
+  .zero r0
   r2 := endstack
   
  
