@@ -1,10 +1,8 @@
+ .zero r0
+ 
 .section data
   .space 100000
   endstack:
 
 .section init
-  .zero r0
   r2 := endstack
-  
- 
-
