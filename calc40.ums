@@ -64,6 +64,48 @@ jumptable_operations:
     m[r0][r4] := pop
     r4 := jumptable + 'z'
     m[r0][r4] := zero_stack
+    
+    goto waiting
+
+
+### 
+
+check_one_digit:
+
+check_two_digits:
+
+
+
+addition:
+	goto check_two_digits linking r1
+	
+	r3 := r3 + r4
+	push r3 on stack r2
+	
+	goto waiting
+
+subtraction:
+	goto check_two_digits linking r1
+	
+	r3 := r3 - r4
+	push r3 on stack r2
+	
+	goto waiting
+
+multiplication:
+	goto check_two_digits linking r1
+	
+	r3 := r3 * r4
+	push r3 on stack r2
+	goto waiting
+
+divison:
+	goto check_two_digits linking r1
+	if ( r4 == 0 ) goto divide_zero
+	if (r3 <s 0) goto first_neg using r1
+	if (
+	
+	
 
 
 
