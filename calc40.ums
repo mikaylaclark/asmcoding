@@ -68,8 +68,8 @@ entering:
 	r3 := ~r1
 	if (r3 == 0) goto end
 	
-	if (r1<s '0') goto jump_ops using r3
-	if (r1 >s '9') goto jump_ops using r3
+	if (r1<s '0') goto jump_to using r3
+	if (r1 >s '9') goto jump_to using r3
 	goto make_num
 
 waiting:
@@ -79,7 +79,7 @@ waiting:
 	if (r3 == 0) goto end
 	
 	jump_to:
-		r4 := jumptable + r1
+		r5 := jumptable + r1 //this was r4 :=, changed it to r5
 		r5 := m[r0][r5]
 		goto r5
 
@@ -88,7 +88,7 @@ end:
 
 make_num:
 	pop r3 off stack r2
-	r3 := r3 + 10
+	r3 := r3 * 10
 	r3 := r3 + r1
 	r3 := r3 - 48
 	
@@ -110,7 +110,7 @@ missing_inputs:
 	output "Needs at least one more input \n"
 	goto waiting
 
-#check for correct num of inputs
+// check for correct num of inputs
 one_digit:
 
 two_digits:
