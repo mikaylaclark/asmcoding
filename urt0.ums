@@ -2,7 +2,10 @@
  
 .section data
   .space 100000
-  stack_bot:
+  print_stack_bot:
+
+  .space 100000
+  val_stack_bot:
 
 .section init
-  r2 := stack_bot
+  r2 := val_stack_bot
