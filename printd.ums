@@ -1,18 +1,22 @@
-// registers:
-// r0
-// r1
-// r2 - pointer of stack of values
-// r3 - current value that's being handled
-// r4 - pointer of stack of what will be printed
-// r5
-// r6 - temp
-// r7 - temp
+# registers:
+# r0
+# r1 - used as a loop counter instead
+# r2 - pointer of stack of values
+# non volatile:
+# r3 - current value that's being handled
+# r4 - pointer of stack of what will be printed
+# volatile:
+# r5 
+# r6 - temp
+# r7 - temp
 
 .section text
 
+// prints contents of the value stack
 newline:
   r4 := print_stack_bot
   
+  // empties the value stack by moving everything into print stack
   empty_val_stack:
     .temps r1, r6, r7
     if (r2 == val_stack_bot) goto empty_print_loop
@@ -22,7 +26,9 @@ newline:
     push r3 on stack r4
     
     goto print_digits
-    
+  
+  // empties the print stack by putting everything into 
+  // value stack
   empty_print_loop:
     .temps r1, r6, r7
     if (r4 == print_stack_bot) goto waiting
@@ -33,7 +39,8 @@ newline:
     push r3 on stack r2
     
     goto empty_print_loop
-  
+
+// loop function that prints number stored in r3
 print_digits:
   output ">>> "
   
@@ -47,17 +54,22 @@ print_digits:
   output '-'
   r3 := 0 - r3
   
+  // prints 0
   print_zero:
     output "0/n"
     goto empty_val_stack
-    
+  
+  // prints the most negative number
   print_most_neg:
     output "-2147483648\n"
     goto empty_val_stack
-    
+  
+  // initializes the start of the loop counter
   init_loop:
     r1 := 0
   
+  // counts how many digits there are, and stores in the 
+  // print stack in order
   store_loop:
     // iterator incrementing by 1
     r1 := r1 + 1
@@ -68,7 +80,10 @@ print_digits:
     r3 := r3 / 10
     
     if (r3 != 0) goto store_loop // next digit place
-    
+  
+  
+  // recursive function -- prints each digit
+  // runs r1 times
   print_recurs:
     r1 := r1 - 1 // keeps track of # of digits
     
