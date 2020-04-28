@@ -2,7 +2,7 @@
  
 .section data
   .space 100000
-  endstack:
+  stack_bot:
 
 .section init
-  r2 := endstack
+  r2 := stack_bot
