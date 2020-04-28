@@ -13,4 +13,4 @@
 .section text
   main:
     .temps r6, r7
-    goto entering using r1
+    goto waiting using r1
