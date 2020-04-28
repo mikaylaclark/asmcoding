@@ -113,8 +113,39 @@ missing_inputs:
 // check for correct num of inputs
 one_digit:
 
+    .temps r5, r6, r7
+
+    if (r2 == val_stack_bot) goto one_digit_error
+
+    pop r4 off stack r2
+    .temps r6, r7
+
+    goto r1 // go back to the caller
+
 two_digits:
 
+    .temps r5, r6, r7
+
+    if (r2 == val_stack_bot) goto two_digit_error
+
+    pop r4 off stack r2
+
+    if (r2 == val_stack_bot) goto two_digit_error
+
+    pop r3 off stack r2
+    .temps r6, r7
+
+    goto r1 // go back to caller
+
+one_digit_error:
+
+    output "Incorrect number of elements - expected at least 1\n"
+    goto waiting
+
+two_digit_error:
+
+    output "Incorrect number of elements - expected at least 2\n"
+    goto waiting
 
 
 add:
@@ -142,6 +173,7 @@ multiply:
 
 divide:
 	goto two_digits linking r1
+
 	if ( r4 == 0 ) goto divide_zero
 	if (r3 <s 0) goto first_neg using r1
 	if (r4 <s 0) goto second_neg using r1

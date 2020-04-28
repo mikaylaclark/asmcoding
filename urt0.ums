@@ -1,5 +1,5 @@
- .zero r0
- 
+// making space for jumptable
+
 .section data
   .space 100000
   print_stack_bot:
@@ -9,3 +9,4 @@
 
 .section init
   r2 := val_stack_bot
+
