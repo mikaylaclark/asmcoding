@@ -1,3 +1,18 @@
+# calc40.ums
+# Zoe Hsieh and Mikayla Clark
+# 4/27/20 - Comp40
+#
+# registers:
+# r0
+# r1 - holds the element inputted 
+# r2 - pointer of stack of values
+# non volatile:
+# r3 - current value that's being handled
+# r4 - pointer of stack of what will be printed
+# volatile:
+# r5 - iterator to fill the jumptable, general
+# r6 - temp
+# r7 - temp
 
 // initializing temp registers and zero registerr
 .section init
