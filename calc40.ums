@@ -216,4 +216,5 @@ pop:
 	goto waiting
 
 zero_stack:
-	
+	r2 := val_stack_bot
+	goto waiting
