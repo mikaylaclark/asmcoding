@@ -1,5 +1,20 @@
-// making space for jumptable
+# urt0.ums
+# Zoe Hsieh and Mikayla Clark
+# 4/27/20 - Comp40
+#
+# registers:
+# r0
+# r1  
+# r2 - pointer of stack of values
+# non volatile:
+# r3 
+# r4 
+# volatile:
+# r5 - general
+# r6 - temp
+# r7 - temp
 
+// making space for jumptable
 .section data
   .space 100000
   print_stack_bot:
@@ -7,9 +22,11 @@
   .space 100000
   val_stack_bot:
 
+// setting up r2 with a value 
 .section init
   r2 := val_stack_bot
 
+// defining main
 .section text
   main:
     .temps r6, r7

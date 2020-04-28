@@ -1,3 +1,19 @@
+# callmain.ums
+# Zoe Hsieh and Mikayla Clark
+# 4/27/20 - Comp40
+#
+# registers:
+# r0 — holds zero
+# r1 — holds value inputted
+# r2 - pointer of stack of values
+# non volatile:
+# r3 
+# r4 
+# volatile:
+# r5 - general
+# r6 - temp
+# r7 - temp
+
 .section init
   .temps r6, r7
   .zero r0
