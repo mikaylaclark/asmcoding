@@ -10,3 +10,7 @@
 .section init
   r2 := val_stack_bot
 
+.section text
+  main:
+    .temps r6, r7
+    goto entering using r1
